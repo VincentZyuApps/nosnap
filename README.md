@@ -1,96 +1,122 @@
 ![nosnap](https://socialify.git.ci/VincentZyu233/nosnap/image?description=1&font=Jost&forks=1&issues=1&language=1&logo=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F142771491%3Fv%3D4&name=1&owner=1&pulls=1&stargazers=1&theme=Auto)
 # 🚫 NoSnap
 
-> **Ubuntu你老是惦记着你那snap干啥？**
+> **Ubuntu, why are you so obsessed with Snap?**
 
-一键清除 Ubuntu 系统中的 Snap 全家桶，还你一个干净清爽的 Linux 环境。
-
----
-
-## 🤔 为什么要用这个？
-
-曾几何时，Ubuntu 是多少人入门 Linux 的第一选择——轻量、优雅、开箱即用。
-
-然而不知从何时起，Canonical 开始疯狂推销自家的 Snap 包管理器，把它塞进系统的每一个角落：
-
-- 🐌 **启动速度感人**：一个计算器打开要 5 秒，你以为你在用 Windows 11？
-- 💽 **`/dev/loop` 洗版**：执行一下 `lsblk`，满屏的 loop 设备，仿佛在数羊。
-- 🎃 **磁盘空间黑洞**：每个 Snap 包都自带完整运行时，500MB 起步，Ubuntu 这是在致敬 Windows 的体积艺术。
-- 🔒 **强制自动更新**：说好的 Linux 自由呢？用户的选择权被 Canonical 吃了？
-- 🧟 **杀不死的 snapd**：你卸了它，它自己又装回来，比牛皮癣还顽强。
-
-Ubuntu 越来越臃肿，再这么搞下去怕是要被开除 Linux 籍了。别的发行版都在努力做减法，就 Ubuntu 在往系统里疯狂塞私货，`apt install chromium` 装回来一个 Snap 版——这跟挂羊头卖狗肉有什么区别？
-
-所以，**NoSnap** 来了。一个脚本，一行命令，把 Snap 连根拔起，永绝后患。
+One-click removal of the Snap ecosystem from Ubuntu, giving you back a clean Linux environment.
 
 ---
 
-## ✨ 功能
+## 🤔 Why should I care?
 
-- ✅ 停止并禁用所有 Snap 相关服务
-- ✅ 按依赖顺序卸载全部 Snap 软件包
-- ✅ 彻底卸载 `snapd` 本体
-- ✅ 清理所有 Snap 残留目录（`~/snap`、`/var/lib/snapd` 等）
-- ✅ 配置 APT 策略锁定，**防止 `snapd` 死灰复燃**
-- ✅ 显示释放的磁盘空间，让你直观感受自由的味道
+Once upon a time, Ubuntu was everyone's first love for entering the Linux world — lightweight, elegant, works out of the box.
+
+But at some point, Canonical decided to become the Snap salesperson of the year, cramming it into every orifice of your system:
+
+- 🐌 **Impressively slow startup**: A calculator app takes 5 seconds to open. Are you running Windows 11 or something?
+- 💽 **`/dev/loop` spam**: Run `lsblk` once and enjoy an endless list of loop devices. It's like counting sheep, except you're not trying to sleep.
+- 🎃 **Disk space black hole**: Every Snap package bundles its own runtime. 500MB for a calculator? Ubuntu is really paying tribute to Windows' volumetric artistry.
+- 🔒 **Forced auto-updates**: Where's your Linux freedom now? Did Canonical eat your user agency?
+- 🧟 **The unkillable snapd**: You remove it. It comes back. More stubborn than a terminal rash.
+
+Ubuntu gets fatter by the day. At this rate it's going to get excommunicated from the Linux community. Other distros are trimming the fat, and Ubuntu is over here force-feeding you proprietary garbage. `apt install chromium` gives you a Snap version — isn't that crying wolf while selling dog meat?
+
+So, **NoSnap** was born. One script, one command, rip Snap out by the roots, never to return.
 
 ---
 
-## 🚀 使用方法
+## ✨ Features
+
+- ✅ Stop and disable all Snap-related services
+- ✅ Uninstall all Snap packages in dependency order
+- ✅ Completely purge the `snapd` package itself
+- ✅ Clean up every Snap leftover (`~/snap`, `/var/lib/snapd`, etc.)
+- ✅ Set APT pinning policy to **prevent `snapd` from ever crawling back**
+- ✅ Show how much disk space you reclaimed — so you can bask in the sweet smell of freedom
+
+---
+
+## 🚀 Usage
+
+### Method 1: One-liner (recommended)
 
 ```bash
-# 下载脚本
-git clone https://github.com/VincentZyu233/nosnap
-# 或者去gitee下载
+# Run directly from GitHub
+curl -fsSL https://raw.githubusercontent.com/VincentZyuApps/nosnap/main/nosnap.sh | sudo bash
+
+# Or run directly from Gitee
+curl -fsSL https://gitee.com/vincent-zyu/nosnap/raw/main/nosnap.sh | sudo bash
+```
+
+### Method 2: Clone locally
+
+```bash
+# Clone from GitHub
+git clone https://github.com/VincentZyuApps/nosnap
+# Or clone from Gitee
 git clone https://gitee.com/vincent-zyu/nosnap
 cd nosnap
 
-# 赋予执行权限
+# Make it executable
 chmod +x nosnap.sh
 
-# 以 root 权限运行
+# Run as root
 sudo ./nosnap.sh
 ```
 
-就这么简单。一杯咖啡的时间都不用，Snap 就从你的系统里彻底消失了。
+That's it. Faster than a coffee break, and Snap is gone from your system for good.
 
 ---
 
-## ⚠️ 注意事项
+## ⚠️ Caveats
 
-- 请确保在 **Ubuntu / 基于 Ubuntu 的发行版** 上运行（Debian 用户一般没这烦恼，毕竟人家没被 Canonical 绑架）。
-- 如果你正在使用 Snap 版的 Firefox 或其他软件，运行脚本前请先通过 APT 或 PPA 安装替代版本。
-- 脚本需要 **root 权限**，毕竟要做手术嘛。
-
----
-
-## 📋 脚本做了什么？
-
-| 步骤 | 操作 |
-|------|------|
-| 1 | 计算当前 Snap 占用的磁盘空间 |
-| 2 | 停止并禁用 `snapd` 相关服务 |
-| 3 | 逐一卸载所有 Snap 包（先普通包，再核心包） |
-| 4 | `apt purge` 卸载 `snapd` 本体 |
-| 5 | 删除所有 Snap 残留目录 |
-| 6 | 写入 APT Pin 策略，永久封禁 `snapd` 安装 |
+- Make sure you're running **Ubuntu / an Ubuntu-based distro** (Debian users generally don't have this problem — they're not being held hostage by Canonical).
+- If you're using the Snap version of Firefox or other software, install an alternative via APT or a PPA before running the script. You've been warned.
+- The script needs **root privileges**. We're performing surgery here, after all.
 
 ---
 
-## 🗣️ 写在最后
+## 📋 What does the script actually do?
 
-Linux 的灵魂是**自由与选择**。如果一个发行版开始替用户做决定、往系统里强塞谁都不想要的东西，那它离社区的心就越来越远了。
+| Step | Action |
+|------|--------|
+| 1 | Calculate how much space Snap is wasting |
+| 2 | Stop and disable `snapd`-related services |
+| 3 | Uninstall all Snap packages one by one (regular first, then core) |
+| 4 | `apt purge` to obliterate the `snapd` package |
+| 5 | Delete all Snap residual directories |
+| 6 | Apply APT pinning policy to permanently ban `snapd` installation |
 
-Snap 本身不是原罪，**强制推广才是。**
+---
 
-希望 Canonical 有一天能想明白这个道理。在那之前——
+## 🗣️ Final thoughts
+
+The soul of Linux is **freedom and choice**. When a distro starts making decisions for you and shoving things nobody asked for down your throat, it's drifting away from the community.
+
+Snap itself is not the sin. **Forced adoption is.**
+
+Maybe one day Canonical will figure that out. Until then —
 
 ```
 sudo ./nosnap.sh
 ```
+
+---
+
+---
+
+## 🎙️ Community hot takes
+
+There's a post on Zhihu asking: "What distro for Linux newcomers?"
+The answer:
+> First is Debian. Second is Ubuntu without Snap.
+
+Translation: Debian is what Ubuntu wishes it could be. Ubuntu without Snap is just Debian in a trench coat, with a side of Canonical's questionable life choices.
+
+The irony: the best Ubuntu is the one that least resembles Ubuntu. This is the "we have Debian at home" meme come to life.
 
 ---
 
 ## 📜 License
 
-MIT — 自由地使用，就像 Linux 本该有的样子。
+MIT — use it freely, the way Linux was always meant to be.
