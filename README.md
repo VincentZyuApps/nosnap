@@ -1,3 +1,6 @@
+> **[📖 English](README.md)**
+> **[📖 简体中文(大陆)](README.zh-cn.md)**
+
 ![nosnap](https://socialify.git.ci/VincentZyu233/nosnap/image?description=1&font=Jost&forks=1&issues=1&language=1&logo=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F142771491%3Fv%3D4&name=1&owner=1&pulls=1&stargazers=1&theme=Auto)
 # 🚫 NoSnap
 
