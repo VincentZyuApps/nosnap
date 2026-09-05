@@ -1,2 +1,2 @@
-README.md linguist-detectable=true
-README.zh-cn.md linguist-detectable=true
+README.md linguist-detectable -linguist-documentation
+README.zh-cn.md -linguist-detectable linguist-documentation
